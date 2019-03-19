@@ -49,55 +49,58 @@
             // 
             this.buttonLeftJump.Location = new System.Drawing.Point(28, 265);
             this.buttonLeftJump.Name = "buttonLeftJump";
-            this.buttonLeftJump.Size = new System.Drawing.Size(219, 38);
+            this.buttonLeftJump.Size = new System.Drawing.Size(108, 55);
             this.buttonLeftJump.TabIndex = 1;
             this.buttonLeftJump.Text = "Прыжок влево";
             this.buttonLeftJump.UseVisualStyleBackColor = true;
+            this.buttonLeftJump.Click += new System.EventHandler(this.ButtonLeftJump_Click);
             // 
             // buttonRightJump
             // 
-            this.buttonRightJump.Location = new System.Drawing.Point(28, 309);
+            this.buttonRightJump.Location = new System.Drawing.Point(166, 265);
             this.buttonRightJump.Name = "buttonRightJump";
-            this.buttonRightJump.Size = new System.Drawing.Size(219, 37);
+            this.buttonRightJump.Size = new System.Drawing.Size(114, 55);
             this.buttonRightJump.TabIndex = 2;
             this.buttonRightJump.Text = "Прыжок вправо ";
             this.buttonRightJump.UseVisualStyleBackColor = true;
+            this.buttonRightJump.Click += new System.EventHandler(this.ButtonRightJump_Click);
             // 
             // buttonPain
             // 
-            this.buttonPain.Location = new System.Drawing.Point(28, 352);
+            this.buttonPain.Location = new System.Drawing.Point(28, 326);
             this.buttonPain.Name = "buttonPain";
-            this.buttonPain.Size = new System.Drawing.Size(219, 43);
+            this.buttonPain.Size = new System.Drawing.Size(252, 43);
             this.buttonPain.TabIndex = 3;
             this.buttonPain.Text = "Перекрасить точку";
             this.buttonPain.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(28, 401);
+            this.buttonCancel.Enabled = false;
+            this.buttonCancel.Location = new System.Drawing.Point(28, 375);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(219, 46);
+            this.buttonCancel.Size = new System.Drawing.Size(252, 46);
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Отменить последнее действие";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // pictureBoxMain
             // 
-            this.pictureBoxMain.Location = new System.Drawing.Point(281, 47);
+            this.pictureBoxMain.BackColor = System.Drawing.Color.White;
+            this.pictureBoxMain.Location = new System.Drawing.Point(305, 47);
             this.pictureBoxMain.Name = "pictureBoxMain";
-            this.pictureBoxMain.Size = new System.Drawing.Size(524, 446);
+            this.pictureBoxMain.Size = new System.Drawing.Size(1018, 420);
             this.pictureBoxMain.TabIndex = 5;
             this.pictureBoxMain.TabStop = false;
+            this.pictureBoxMain.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxMain_Paint);
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMenu,
-            this.ToolStripMenuItemSupport});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(817, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1335, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -113,13 +116,13 @@
             // ToolStripMenuItemMakeTask
             // 
             this.ToolStripMenuItemMakeTask.Name = "ToolStripMenuItemMakeTask";
-            this.ToolStripMenuItemMakeTask.Size = new System.Drawing.Size(216, 26);
+            this.ToolStripMenuItemMakeTask.Size = new System.Drawing.Size(213, 26);
             this.ToolStripMenuItemMakeTask.Text = "Создать задание";
             // 
             // ToolStripMenuItemDownloadTask
             // 
             this.ToolStripMenuItemDownloadTask.Name = "ToolStripMenuItemDownloadTask";
-            this.ToolStripMenuItemDownloadTask.Size = new System.Drawing.Size(216, 26);
+            this.ToolStripMenuItemDownloadTask.Size = new System.Drawing.Size(213, 26);
             this.ToolStripMenuItemDownloadTask.Text = "Загрузить задание";
             // 
             // ToolStripMenuItemSupport
@@ -133,17 +136,18 @@
             // помощьToolStripMenuItem
             // 
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.помощьToolStripMenuItem.Text = "Помощь";
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(28, 453);
+            this.buttonReset.Location = new System.Drawing.Point(28, 427);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(219, 40);
+            this.buttonReset.Size = new System.Drawing.Size(252, 40);
             this.buttonReset.TabIndex = 7;
-            this.buttonReset.Text = "начать сначала";
+            this.buttonReset.Text = "Начать сначала";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.ButtonReset_Click);
             // 
             // listBoxActions
             // 
@@ -151,14 +155,14 @@
             this.listBoxActions.ItemHeight = 16;
             this.listBoxActions.Location = new System.Drawing.Point(28, 47);
             this.listBoxActions.Name = "listBoxActions";
-            this.listBoxActions.Size = new System.Drawing.Size(219, 196);
+            this.listBoxActions.Size = new System.Drawing.Size(252, 212);
             this.listBoxActions.TabIndex = 8;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 520);
+            this.ClientSize = new System.Drawing.Size(1335, 487);
             this.Controls.Add(this.listBoxActions);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.pictureBoxMain);

@@ -13,10 +13,14 @@ namespace kursovik
         public int PrevCoordinateX { get; set; }
         public void JumpLeft(int sizeJump)
         {
+            PrevCoordinateX = CoordinateX;
+            CoordinateX -= sizeJump;
             // TODO realization
         }
         public void JumpRight(int sizeJump)
         {
+            PrevCoordinateX = CoordinateX;
+            CoordinateX += sizeJump;
             // TODO realization
         }
     }
