@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace kursovik
 {
+    delegate void MessageDelegate(string msg);
     static class Program
     {
         /// <summary>

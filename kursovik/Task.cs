@@ -15,6 +15,5 @@ namespace kursovik
         public int SizeRightJump { get; set; }
         public int FinishPosition { get; set; }
         public List<int> PointsPaint { get; set; }
-
     }
 }

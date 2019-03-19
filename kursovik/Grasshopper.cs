@@ -8,6 +8,7 @@ namespace kursovik
 {
     class Grasshopper
     {
+        public event MessageDelegate ErrorMessage;
         public int CoordinateX { get; set; }
         public int PrevCoordinateX { get; set; }
         public void JumpLeft(int sizeJump)
