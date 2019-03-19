@@ -93,6 +93,13 @@ namespace kursovik
             grasshopper = new Grasshopper();
             listBoxActions.Items.Clear();
             buttonCancel.Enabled = false;
+            pictureBoxMain.Refresh();
+        }
+
+        private void MakeTaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateTaskForm form = new CreateTaskForm();
+            form.ShowDialog(this);
         }
     }
 }

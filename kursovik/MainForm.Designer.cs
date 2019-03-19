@@ -34,6 +34,10 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.MenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MakeTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DownloadTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMakeTask = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDownloadTask = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,11 +102,42 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuToolStripMenuItem,
+            this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1335, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // MenuToolStripMenuItem
+            // 
+            this.MenuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MakeTaskToolStripMenuItem,
+            this.DownloadTaskToolStripMenuItem});
+            this.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem";
+            this.MenuToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.MenuToolStripMenuItem.Text = "Меню";
+            // 
+            // MakeTaskToolStripMenuItem
+            // 
+            this.MakeTaskToolStripMenuItem.Name = "MakeTaskToolStripMenuItem";
+            this.MakeTaskToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.MakeTaskToolStripMenuItem.Text = "Создать задание";
+            this.MakeTaskToolStripMenuItem.Click += new System.EventHandler(this.MakeTaskToolStripMenuItem_Click);
+            // 
+            // DownloadTaskToolStripMenuItem
+            // 
+            this.DownloadTaskToolStripMenuItem.Name = "DownloadTaskToolStripMenuItem";
+            this.DownloadTaskToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.DownloadTaskToolStripMenuItem.Text = "Загрузить задание";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // ToolStripMenuItemMenu
             // 
@@ -195,6 +230,10 @@
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.ListBox listBoxActions;
+        private System.Windows.Forms.ToolStripMenuItem MenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MakeTaskToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DownloadTaskToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
     }
 }
 
