@@ -51,6 +51,7 @@
             this.listBoxPaintPoints = new System.Windows.Forms.ListBox();
             this.buttonAddPaintPoint = new System.Windows.Forms.Button();
             this.numericUpDownPositionPaintPoint = new System.Windows.Forms.NumericUpDown();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeJumpLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeJumpRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
@@ -189,12 +190,14 @@
             // 
             // buttonSaveTaskToFile
             // 
+            this.buttonSaveTaskToFile.Enabled = false;
             this.buttonSaveTaskToFile.Location = new System.Drawing.Point(128, 627);
             this.buttonSaveTaskToFile.Name = "buttonSaveTaskToFile";
             this.buttonSaveTaskToFile.Size = new System.Drawing.Size(178, 52);
             this.buttonSaveTaskToFile.TabIndex = 10;
             this.buttonSaveTaskToFile.Text = "Сохранить задание в файл";
             this.buttonSaveTaskToFile.UseVisualStyleBackColor = true;
+            this.buttonSaveTaskToFile.Click += new System.EventHandler(this.ButtonSaveTaskToFile_Click);
             // 
             // buttonAddTask
             // 
@@ -277,6 +280,13 @@
             this.numericUpDownPositionPaintPoint.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownPositionPaintPoint.TabIndex = 8;
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "tsk";
+            this.saveFileDialog1.FileName = "Task";
+            this.saveFileDialog1.Filter = "Файл задания (*.tsk)|*.tsk";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1_FileOk);
+            // 
             // CreateTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -339,5 +349,6 @@
         private System.Windows.Forms.Button buttonAddPaintPoint;
         private System.Windows.Forms.NumericUpDown numericUpDownPositionPaintPoint;
         private System.Windows.Forms.Button buttonDel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

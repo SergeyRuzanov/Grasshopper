@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -121,6 +123,7 @@ namespace kursovik
             {
                 Task task = new Task(startPosition, sizeLeftJump, sizeRightJump, finishPosition, leftBorder, rightBorder, paintPoints);
                 mainForm.UpdateForm(task);
+                buttonSaveTaskToFile.Enabled = true;
             }
         }
 
@@ -181,6 +184,22 @@ namespace kursovik
                 listBoxPaintPoints.Items.RemoveAt(indexDel);
                 paintPoints.RemoveAt(indexDel);
             }
+        }
+
+        private void ButtonSaveTaskToFile_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void SaveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            string fileName = saveFileDialog1.FileName;
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
+            {
+                formatter.Serialize(fileStream, mainForm.task);
+            }
+            buttonSaveTaskToFile.Enabled = false;
         }
     }
 }

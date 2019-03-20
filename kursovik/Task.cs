@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace kursovik
 {
+    [Serializable]
     public class Task
     {
         public Task() : this(0, 2, 3, null, null, null, null) { }
