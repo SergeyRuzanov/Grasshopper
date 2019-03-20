@@ -12,6 +12,8 @@ namespace kursovik
 {
     public partial class MainForm : Form
     {
+        public Grasshopper grasshopper { get; set; } = new Grasshopper();
+        public Task task { get; set; } = new Task();
         public MainForm()
         {
             InitializeComponent();
@@ -19,8 +21,8 @@ namespace kursovik
             buttonRightJump.Text = $"Прыжок вправо на {task.SizeRightJump}";
         }
 
-        Grasshopper grasshopper = new Grasshopper() { CoordinateX = 0};
-        Task task = new Task() { SizeLeftJump = 10, SizeRightJump = 3 };
+        
+        
         //Пикселей в одном делении оси
         const int PIX_IN_ONE = 30;
         private void PictureBoxMain_Paint(object sender, PaintEventArgs e)

@@ -101,7 +101,7 @@
             this.groupBoxBorders.Enabled = false;
             this.groupBoxBorders.Location = new System.Drawing.Point(31, 216);
             this.groupBoxBorders.Name = "groupBoxBorders";
-            this.groupBoxBorders.Size = new System.Drawing.Size(360, 146);
+            this.groupBoxBorders.Size = new System.Drawing.Size(432, 146);
             this.groupBoxBorders.TabIndex = 4;
             this.groupBoxBorders.TabStop = false;
             this.groupBoxBorders.Text = "Границы";
@@ -139,7 +139,7 @@
             // labelSizeJumpRight
             // 
             this.labelSizeJumpRight.AutoSize = true;
-            this.labelSizeJumpRight.Location = new System.Drawing.Point(9, 41);
+            this.labelSizeJumpRight.Location = new System.Drawing.Point(17, 39);
             this.labelSizeJumpRight.Name = "labelSizeJumpRight";
             this.labelSizeJumpRight.Size = new System.Drawing.Size(161, 17);
             this.labelSizeJumpRight.TabIndex = 7;
@@ -148,7 +148,7 @@
             // labelStartPosition
             // 
             this.labelStartPosition.AutoSize = true;
-            this.labelStartPosition.Location = new System.Drawing.Point(13, 73);
+            this.labelStartPosition.Location = new System.Drawing.Point(17, 68);
             this.labelStartPosition.Name = "labelStartPosition";
             this.labelStartPosition.Size = new System.Drawing.Size(140, 17);
             this.labelStartPosition.TabIndex = 8;
@@ -157,7 +157,7 @@
             // labelFinishPosition
             // 
             this.labelFinishPosition.AutoSize = true;
-            this.labelFinishPosition.Location = new System.Drawing.Point(13, 102);
+            this.labelFinishPosition.Location = new System.Drawing.Point(17, 96);
             this.labelFinishPosition.Name = "labelFinishPosition";
             this.labelFinishPosition.Size = new System.Drawing.Size(56, 17);
             this.labelFinishPosition.TabIndex = 9;

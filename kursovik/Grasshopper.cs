@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace kursovik
 {
-    class Grasshopper
+    public class Grasshopper
     {
         public event MessageDelegate ErrorMessage;
+        public Grasshopper() : this(0)
+        {
+
+        }
+        public Grasshopper(int coordinate)
+        {
+            CoordinateX = coordinate;
+            PrevCoordinateX = coordinate;
+        }
         public int CoordinateX { get; set; }
         public int PrevCoordinateX { get; set; }
         public void JumpLeft(int sizeJump)
