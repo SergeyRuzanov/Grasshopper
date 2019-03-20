@@ -12,9 +12,12 @@ namespace kursovik
 {
     public partial class CreateTaskForm : Form
     {
-        public CreateTaskForm()
+        private MainForm mainForm;
+        private List<int> paintPoints = new List<int>();
+        public CreateTaskForm(MainForm e)
         {
             InitializeComponent();
+            mainForm = e;
             //Установка пределов числовых полей
             numericUpDownStartPosition.Maximum = int.MaxValue;
             numericUpDownStartPosition.Minimum = int.MinValue;
@@ -30,6 +33,154 @@ namespace kursovik
             numericUpDownBorderRight.Minimum = int.MinValue;
             numericUpDownPositionPaintPoint.Maximum = int.MaxValue;
             numericUpDownPositionPaintPoint.Minimum = int.MinValue;
+            //Установка значений формы
+            numericUpDownStartPosition.Value = e.task.StartPosition;
+            numericUpDownSizeJumpLeft.Value = e.task.SizeLeftJump;
+            numericUpDownSizeJumpRight.Value = e.task.SizeRightJump;
+            if (e.task.FinishPosition != null)
+            {
+                numericUpDownFinish.Value = (int)e.task.FinishPosition;
+            }
+            if (e.task.MinBorder != null)
+            {
+                numericUpDownBorderLeft.Value = (int)e.task.MinBorder;
+                checkBoxBorder.Checked = true;
+            }
+            if (e.task.MaxBorder != null)
+            {
+                numericUpDownBorderRight.Value = (int)e.task.MaxBorder;
+                checkBoxBorder.Checked = true;
+            }
+            if (e.task.PointsPaints != null)
+            {
+                paintPoints = e.task.PointsPaints;
+                foreach (int val in paintPoints)
+                {
+                    listBoxPaintPoints.Items.Add(val);
+                }
+            }
+            
+        }
+
+        private void ButtonAddTask_Click(object sender, EventArgs e)
+        {
+            int startPosition = (int)numericUpDownStartPosition.Value;
+            int sizeLeftJump = (int)numericUpDownSizeJumpLeft.Value;
+            int sizeRightJump = (int)numericUpDownSizeJumpLeft.Value;
+            int? finishPosition = (int)numericUpDownFinish.Value;
+            int? rightBorder = null;
+            int? leftBorder = null;
+            List<int> paintPoints = null;
+
+            bool errorFlag = false;
+            if (numericUpDownFinish.Value == numericUpDownStartPosition.Value)
+            {
+                numericUpDownFinish.BackColor = Color.Red;
+                MessageBox.Show("Начальная позиция не может совпадать с финишем!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorFlag = true;
+            }
+            if (checkBoxBorder.Checked)
+            {
+                rightBorder = (int)numericUpDownBorderRight.Value;
+                leftBorder = (int)numericUpDownBorderLeft.Value;
+                if (leftBorder >= startPosition)
+                {
+                    MessageBox.Show("Начальная позиция не может быть левее границы или совпадать с ней", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    numericUpDownBorderLeft.BackColor = Color.Red;
+                    errorFlag = true;
+                }
+                if (rightBorder <= startPosition)
+                {
+                    MessageBox.Show("Начальная позиция не может быть правее границы или совпадать с ней", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    numericUpDownBorderRight.BackColor = Color.Red;
+                    errorFlag = true;
+                }
+
+                if (leftBorder >= finishPosition)
+                {
+                    MessageBox.Show("Финиш не может быть левее границы или совпадать с ней", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    numericUpDownBorderLeft.BackColor = Color.Red;
+                    errorFlag = true;
+                }
+                if (rightBorder <= finishPosition)
+                {
+                    MessageBox.Show("Финиш не может быть правее границы или совпадать с ней", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    numericUpDownBorderRight.BackColor = Color.Red;
+                    errorFlag = true;
+                }
+            }
+            if (checkBoxPaintPoints.Checked)
+            {
+
+                if (this.paintPoints.Count != 0)
+                {
+                    paintPoints = this.paintPoints;
+                }
+            }
+            if (!errorFlag)
+            {
+                Task task = new Task(startPosition, sizeLeftJump, sizeRightJump, finishPosition, leftBorder, rightBorder, paintPoints);
+                mainForm.UpdateForm(task);
+            }
+        }
+
+        private void CheckBoxBorder_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxBorders.Enabled = checkBoxBorder.Checked;
+            if (checkBoxBorder.Checked)
+            {
+                if (numericUpDownBorderLeft.Value >= numericUpDownStartPosition.Value)
+                {
+
+                    numericUpDownBorderLeft.Value = numericUpDownStartPosition.Value - 1;
+
+                }
+                if (numericUpDownBorderRight.Value <= numericUpDownStartPosition.Value)
+                {
+
+                    numericUpDownBorderRight.Value = numericUpDownStartPosition.Value + 1;
+                }
+            }
+        }
+
+        private void CheckBoxPaintPoints_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxPointPoints.Enabled = checkBoxPaintPoints.Checked;
+        }
+
+        private void NumericUpDownFinish_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownFinish.BackColor = SystemColors.Window;
+        }
+
+        private void NumericUpDownBorderLeft_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownBorderLeft.BackColor = SystemColors.Window;
+        }
+
+        private void NumericUpDownBorderRight_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownBorderRight.BackColor = SystemColors.Window;
+        }
+
+        private void ButtonAddPaintPoint_Click(object sender, EventArgs e)
+        {
+            int value = (int)numericUpDownPositionPaintPoint.Value;
+            if (paintPoints.IndexOf(value) == -1)
+            {
+                paintPoints.Add(value);
+                listBoxPaintPoints.Items.Add(value);
+            }
+        }
+
+        private void ButtonDel_Click(object sender, EventArgs e)
+        {
+            int indexDel = listBoxPaintPoints.SelectedIndex;
+            if (indexDel != -1)
+            {
+                listBoxPaintPoints.Items.RemoveAt(indexDel);
+                paintPoints.RemoveAt(indexDel);
+            }
         }
     }
 }

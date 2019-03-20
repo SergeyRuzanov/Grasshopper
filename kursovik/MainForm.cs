@@ -13,15 +13,22 @@ namespace kursovik
     public partial class MainForm : Form
     {
         public Grasshopper grasshopper { get; set; } = new Grasshopper();
-        public Task task { get; set; } = new Task();
+        public Task task { get; set; }
         public MainForm()
         {
             InitializeComponent();
+            UpdateForm(new Task());
+        }
+        public void UpdateForm(Task _task)
+        {
+            task = _task;
+            grasshopper = new Grasshopper(task.StartPosition);
             buttonLeftJump.Text = $"Прыжок влево на {task.SizeLeftJump}";
             buttonRightJump.Text = $"Прыжок вправо на {task.SizeRightJump}";
+            listBoxActions.Items.Clear();
+            buttonCancel.Enabled = false;
+            pictureBoxMain.Refresh();
         }
-
-        
         
         //Пикселей в одном делении оси
         const int PIX_IN_ONE = 30;
@@ -92,7 +99,7 @@ namespace kursovik
 
         private void ButtonReset_Click(object sender, EventArgs e)
         {
-            grasshopper = new Grasshopper();
+            grasshopper = new Grasshopper(task.StartPosition);
             listBoxActions.Items.Clear();
             buttonCancel.Enabled = false;
             pictureBoxMain.Refresh();
@@ -100,7 +107,7 @@ namespace kursovik
 
         private void MakeTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateTaskForm form = new CreateTaskForm();
+            CreateTaskForm form = new CreateTaskForm(this);
             form.ShowDialog(this);
         }
     }

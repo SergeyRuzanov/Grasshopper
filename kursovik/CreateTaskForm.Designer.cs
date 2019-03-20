@@ -33,29 +33,30 @@
             this.numericUpDownStartPosition = new System.Windows.Forms.NumericUpDown();
             this.checkBoxBorder = new System.Windows.Forms.CheckBox();
             this.groupBoxBorders = new System.Windows.Forms.GroupBox();
-            this.numericUpDownBorderLeft = new System.Windows.Forms.NumericUpDown();
+            this.labelBorderRight = new System.Windows.Forms.Label();
+            this.labelBorderLeft = new System.Windows.Forms.Label();
             this.numericUpDownBorderRight = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownBorderLeft = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownFinish = new System.Windows.Forms.NumericUpDown();
             this.labelSizeJumpLeft = new System.Windows.Forms.Label();
             this.labelSizeJumpRight = new System.Windows.Forms.Label();
             this.labelStartPosition = new System.Windows.Forms.Label();
             this.labelFinishPosition = new System.Windows.Forms.Label();
-            this.labelBorderLeft = new System.Windows.Forms.Label();
-            this.labelBorderRight = new System.Windows.Forms.Label();
             this.buttonSaveTaskToFile = new System.Windows.Forms.Button();
             this.buttonAddTask = new System.Windows.Forms.Button();
             this.checkBoxPaintPoints = new System.Windows.Forms.CheckBox();
             this.groupBoxPointPoints = new System.Windows.Forms.GroupBox();
-            this.numericUpDownPositionPaintPoint = new System.Windows.Forms.NumericUpDown();
-            this.buttonAddPaintPoint = new System.Windows.Forms.Button();
-            this.listBoxPaintPoints = new System.Windows.Forms.ListBox();
+            this.buttonDel = new System.Windows.Forms.Button();
             this.labelPaintPoint = new System.Windows.Forms.Label();
+            this.listBoxPaintPoints = new System.Windows.Forms.ListBox();
+            this.buttonAddPaintPoint = new System.Windows.Forms.Button();
+            this.numericUpDownPositionPaintPoint = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeJumpLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeJumpRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
             this.groupBoxBorders.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBorderLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBorderRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBorderLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFinish)).BeginInit();
             this.groupBoxPointPoints.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPositionPaintPoint)).BeginInit();
@@ -81,6 +82,7 @@
             this.numericUpDownStartPosition.Name = "numericUpDownStartPosition";
             this.numericUpDownStartPosition.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownStartPosition.TabIndex = 2;
+            this.numericUpDownStartPosition.ValueChanged += new System.EventHandler(this.NumericUpDownFinish_ValueChanged);
             // 
             // checkBoxBorder
             // 
@@ -88,9 +90,10 @@
             this.checkBoxBorder.Location = new System.Drawing.Point(31, 189);
             this.checkBoxBorder.Name = "checkBoxBorder";
             this.checkBoxBorder.Size = new System.Drawing.Size(136, 21);
-            this.checkBoxBorder.TabIndex = 3;
+            this.checkBoxBorder.TabIndex = 4;
             this.checkBoxBorder.Text = "Задать границы";
             this.checkBoxBorder.UseVisualStyleBackColor = true;
+            this.checkBoxBorder.CheckedChanged += new System.EventHandler(this.CheckBoxBorder_CheckedChanged);
             // 
             // groupBoxBorders
             // 
@@ -106,26 +109,47 @@
             this.groupBoxBorders.TabStop = false;
             this.groupBoxBorders.Text = "Границы";
             // 
-            // numericUpDownBorderLeft
+            // labelBorderRight
             // 
-            this.numericUpDownBorderLeft.Location = new System.Drawing.Point(234, 32);
-            this.numericUpDownBorderLeft.Name = "numericUpDownBorderLeft";
-            this.numericUpDownBorderLeft.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownBorderLeft.TabIndex = 0;
+            this.labelBorderRight.AutoSize = true;
+            this.labelBorderRight.Location = new System.Drawing.Point(7, 76);
+            this.labelBorderRight.Name = "labelBorderRight";
+            this.labelBorderRight.Size = new System.Drawing.Size(167, 17);
+            this.labelBorderRight.TabIndex = 3;
+            this.labelBorderRight.Text = "Правая граница прямой";
+            // 
+            // labelBorderLeft
+            // 
+            this.labelBorderLeft.AutoSize = true;
+            this.labelBorderLeft.Location = new System.Drawing.Point(7, 34);
+            this.labelBorderLeft.Name = "labelBorderLeft";
+            this.labelBorderLeft.Size = new System.Drawing.Size(159, 17);
+            this.labelBorderLeft.TabIndex = 2;
+            this.labelBorderLeft.Text = "Левая граница прямой";
             // 
             // numericUpDownBorderRight
             // 
             this.numericUpDownBorderRight.Location = new System.Drawing.Point(234, 74);
             this.numericUpDownBorderRight.Name = "numericUpDownBorderRight";
             this.numericUpDownBorderRight.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownBorderRight.TabIndex = 1;
+            this.numericUpDownBorderRight.TabIndex = 6;
+            this.numericUpDownBorderRight.ValueChanged += new System.EventHandler(this.NumericUpDownBorderRight_ValueChanged);
+            // 
+            // numericUpDownBorderLeft
+            // 
+            this.numericUpDownBorderLeft.Location = new System.Drawing.Point(234, 32);
+            this.numericUpDownBorderLeft.Name = "numericUpDownBorderLeft";
+            this.numericUpDownBorderLeft.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownBorderLeft.TabIndex = 5;
+            this.numericUpDownBorderLeft.ValueChanged += new System.EventHandler(this.NumericUpDownBorderLeft_ValueChanged);
             // 
             // numericUpDownFinish
             // 
             this.numericUpDownFinish.Location = new System.Drawing.Point(195, 96);
             this.numericUpDownFinish.Name = "numericUpDownFinish";
             this.numericUpDownFinish.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownFinish.TabIndex = 5;
+            this.numericUpDownFinish.TabIndex = 3;
+            this.numericUpDownFinish.ValueChanged += new System.EventHandler(this.NumericUpDownFinish_ValueChanged);
             // 
             // labelSizeJumpLeft
             // 
@@ -163,24 +187,6 @@
             this.labelFinishPosition.TabIndex = 9;
             this.labelFinishPosition.Text = "Финиш";
             // 
-            // labelBorderLeft
-            // 
-            this.labelBorderLeft.AutoSize = true;
-            this.labelBorderLeft.Location = new System.Drawing.Point(7, 34);
-            this.labelBorderLeft.Name = "labelBorderLeft";
-            this.labelBorderLeft.Size = new System.Drawing.Size(159, 17);
-            this.labelBorderLeft.TabIndex = 2;
-            this.labelBorderLeft.Text = "Левая граница прямой";
-            // 
-            // labelBorderRight
-            // 
-            this.labelBorderRight.AutoSize = true;
-            this.labelBorderRight.Location = new System.Drawing.Point(7, 76);
-            this.labelBorderRight.Name = "labelBorderRight";
-            this.labelBorderRight.Size = new System.Drawing.Size(167, 17);
-            this.labelBorderRight.TabIndex = 3;
-            this.labelBorderRight.Text = "Правая граница прямой";
-            // 
             // buttonSaveTaskToFile
             // 
             this.buttonSaveTaskToFile.Location = new System.Drawing.Point(128, 627);
@@ -198,6 +204,7 @@
             this.buttonAddTask.TabIndex = 11;
             this.buttonAddTask.Text = "Подтвердить задание";
             this.buttonAddTask.UseVisualStyleBackColor = true;
+            this.buttonAddTask.Click += new System.EventHandler(this.ButtonAddTask_Click);
             // 
             // checkBoxPaintPoints
             // 
@@ -205,12 +212,14 @@
             this.checkBoxPaintPoints.Location = new System.Drawing.Point(31, 369);
             this.checkBoxPaintPoints.Name = "checkBoxPaintPoints";
             this.checkBoxPaintPoints.Size = new System.Drawing.Size(346, 21);
-            this.checkBoxPaintPoints.TabIndex = 12;
+            this.checkBoxPaintPoints.TabIndex = 7;
             this.checkBoxPaintPoints.Text = "Задать обязательные точки для закрашивания";
             this.checkBoxPaintPoints.UseVisualStyleBackColor = true;
+            this.checkBoxPaintPoints.CheckedChanged += new System.EventHandler(this.CheckBoxPaintPoints_CheckedChanged);
             // 
             // groupBoxPointPoints
             // 
+            this.groupBoxPointPoints.Controls.Add(this.buttonDel);
             this.groupBoxPointPoints.Controls.Add(this.labelPaintPoint);
             this.groupBoxPointPoints.Controls.Add(this.listBoxPaintPoints);
             this.groupBoxPointPoints.Controls.Add(this.buttonAddPaintPoint);
@@ -223,21 +232,24 @@
             this.groupBoxPointPoints.TabStop = false;
             this.groupBoxPointPoints.Text = "Точки для закрашивания";
             // 
-            // numericUpDownPositionPaintPoint
+            // buttonDel
             // 
-            this.numericUpDownPositionPaintPoint.Location = new System.Drawing.Point(196, 30);
-            this.numericUpDownPositionPaintPoint.Name = "numericUpDownPositionPaintPoint";
-            this.numericUpDownPositionPaintPoint.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownPositionPaintPoint.TabIndex = 0;
+            this.buttonDel.Location = new System.Drawing.Point(267, 170);
+            this.buttonDel.Name = "buttonDel";
+            this.buttonDel.Size = new System.Drawing.Size(75, 23);
+            this.buttonDel.TabIndex = 10;
+            this.buttonDel.Text = "Удалить";
+            this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.ButtonDel_Click);
             // 
-            // buttonAddPaintPoint
+            // labelPaintPoint
             // 
-            this.buttonAddPaintPoint.Location = new System.Drawing.Point(340, 31);
-            this.buttonAddPaintPoint.Name = "buttonAddPaintPoint";
-            this.buttonAddPaintPoint.Size = new System.Drawing.Size(97, 24);
-            this.buttonAddPaintPoint.TabIndex = 1;
-            this.buttonAddPaintPoint.Text = "Добавить";
-            this.buttonAddPaintPoint.UseVisualStyleBackColor = true;
+            this.labelPaintPoint.AutoSize = true;
+            this.labelPaintPoint.Location = new System.Drawing.Point(20, 32);
+            this.labelPaintPoint.Name = "labelPaintPoint";
+            this.labelPaintPoint.Size = new System.Drawing.Size(130, 17);
+            this.labelPaintPoint.TabIndex = 3;
+            this.labelPaintPoint.Text = "Координата точки";
             // 
             // listBoxPaintPoints
             // 
@@ -248,14 +260,22 @@
             this.listBoxPaintPoints.Size = new System.Drawing.Size(321, 84);
             this.listBoxPaintPoints.TabIndex = 2;
             // 
-            // labelPaintPoint
+            // buttonAddPaintPoint
             // 
-            this.labelPaintPoint.AutoSize = true;
-            this.labelPaintPoint.Location = new System.Drawing.Point(20, 32);
-            this.labelPaintPoint.Name = "labelPaintPoint";
-            this.labelPaintPoint.Size = new System.Drawing.Size(130, 17);
-            this.labelPaintPoint.TabIndex = 3;
-            this.labelPaintPoint.Text = "Координата точки";
+            this.buttonAddPaintPoint.Location = new System.Drawing.Point(340, 31);
+            this.buttonAddPaintPoint.Name = "buttonAddPaintPoint";
+            this.buttonAddPaintPoint.Size = new System.Drawing.Size(97, 24);
+            this.buttonAddPaintPoint.TabIndex = 9;
+            this.buttonAddPaintPoint.Text = "Добавить";
+            this.buttonAddPaintPoint.UseVisualStyleBackColor = true;
+            this.buttonAddPaintPoint.Click += new System.EventHandler(this.ButtonAddPaintPoint_Click);
+            // 
+            // numericUpDownPositionPaintPoint
+            // 
+            this.numericUpDownPositionPaintPoint.Location = new System.Drawing.Point(196, 30);
+            this.numericUpDownPositionPaintPoint.Name = "numericUpDownPositionPaintPoint";
+            this.numericUpDownPositionPaintPoint.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownPositionPaintPoint.TabIndex = 8;
             // 
             // CreateTaskForm
             // 
@@ -283,8 +303,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).EndInit();
             this.groupBoxBorders.ResumeLayout(false);
             this.groupBoxBorders.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBorderLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBorderRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBorderLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFinish)).EndInit();
             this.groupBoxPointPoints.ResumeLayout(false);
             this.groupBoxPointPoints.PerformLayout();
@@ -318,5 +338,6 @@
         private System.Windows.Forms.ListBox listBoxPaintPoints;
         private System.Windows.Forms.Button buttonAddPaintPoint;
         private System.Windows.Forms.NumericUpDown numericUpDownPositionPaintPoint;
+        private System.Windows.Forms.Button buttonDel;
     }
 }
