@@ -60,15 +60,16 @@ namespace kursovik
                 {
                     listBoxPaintPoints.Items.Add(val);
                 }
+                checkBoxPaintPoints.Checked = true;
             }
-            
+
         }
 
         private void ButtonAddTask_Click(object sender, EventArgs e)
         {
             int startPosition = (int)numericUpDownStartPosition.Value;
             int sizeLeftJump = (int)numericUpDownSizeJumpLeft.Value;
-            int sizeRightJump = (int)numericUpDownSizeJumpLeft.Value;
+            int sizeRightJump = (int)numericUpDownSizeJumpRight.Value;
             int? finishPosition = (int)numericUpDownFinish.Value;
             int? rightBorder = null;
             int? leftBorder = null;
@@ -113,7 +114,19 @@ namespace kursovik
             }
             if (checkBoxPaintPoints.Checked)
             {
-
+                bool errorMessageBorderflag = false;
+                foreach(int val in this.paintPoints)
+                {
+                    if((checkBoxBorder.Checked && ((val <= numericUpDownBorderLeft.Value) || (val >= numericUpDownBorderRight.Value))) || (val == numericUpDownFinish.Value))
+                    {
+                        errorMessageBorderflag = true;
+                        errorFlag = true;
+                    }
+                }
+                if (errorMessageBorderflag)
+                {
+                    MessageBox.Show("Проверьте список точек для покраски. Они не должны совпадать с финишем или выходить за границы.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 if (this.paintPoints.Count != 0)
                 {
                     paintPoints = this.paintPoints;
@@ -121,7 +134,7 @@ namespace kursovik
             }
             if (!errorFlag)
             {
-                Task task = new Task(startPosition, sizeLeftJump, sizeRightJump, finishPosition, leftBorder, rightBorder, paintPoints);
+                Task task = new Task(startPosition, sizeLeftJump, sizeRightJump, finishPosition, rightBorder, leftBorder, paintPoints);
                 mainForm.UpdateForm(task);
                 buttonSaveTaskToFile.Enabled = true;
             }
@@ -169,10 +182,21 @@ namespace kursovik
         private void ButtonAddPaintPoint_Click(object sender, EventArgs e)
         {
             int value = (int)numericUpDownPositionPaintPoint.Value;
-            if (paintPoints.IndexOf(value) == -1)
+            if (checkBoxBorder.Checked && ((value <= numericUpDownBorderLeft.Value) || (value >= numericUpDownBorderRight.Value)))
             {
-                paintPoints.Add(value);
-                listBoxPaintPoints.Items.Add(value);
+                MessageBox.Show("Точка не входит в заданные границы!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if(value == numericUpDownFinish.Value)
+            {
+                MessageBox.Show("Точка не может совпадать с финишем!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (paintPoints.IndexOf(value) == -1)
+                {
+                    paintPoints.Add(value);
+                    listBoxPaintPoints.Items.Add(value);
+                }
             }
         }
 

@@ -45,6 +45,7 @@
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonReset = new System.Windows.Forms.Button();
             this.listBoxActions = new System.Windows.Forms.ListBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +133,7 @@
             this.DownloadTaskToolStripMenuItem.Name = "DownloadTaskToolStripMenuItem";
             this.DownloadTaskToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.DownloadTaskToolStripMenuItem.Text = "Загрузить задание";
+            this.DownloadTaskToolStripMenuItem.Click += new System.EventHandler(this.DownloadTaskToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
@@ -193,6 +195,12 @@
             this.listBoxActions.Size = new System.Drawing.Size(252, 212);
             this.listBoxActions.TabIndex = 8;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "tsk";
+            this.openFileDialog1.Filter = "Файл задания (*.tsk)|*.tsk";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFileDialog1_FileOk);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -234,6 +242,7 @@
         private System.Windows.Forms.ToolStripMenuItem MakeTaskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DownloadTaskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
